@@ -15,10 +15,7 @@ tests:
 
 allure_report:    
   stage: report
-  image: openjdk:11
-  before_script:
-    - apt-get update && apt-get install -y nodejs
-    - npm install -g allure-commandline
+  image: tobix/allure-cli  
   script:
     - allure generate --clean allure-results/ -o allure-report --single-file
   artifacts:    
