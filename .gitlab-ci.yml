@@ -10,5 +10,18 @@ tests:
   artifacts:    
     when: always
     paths:
-      - playwright-report
-    expire_in: 3 days
+      - allure-results
+
+allure_report:    
+  stage: report
+  image: node:latest
+  before_script:
+    - npm install -g allure-commandline
+  script: 
+    - allure generate --clean allure-results/ -o allure-report --single-file
+  artifacts:    
+    paths:
+      - allure-report/
+    when: on_success
+    expire_in: 30 days
+
