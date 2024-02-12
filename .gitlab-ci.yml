@@ -17,7 +17,7 @@ allure_report:
   stage: report
   image: ondysss/allure
   script:
-    - allure generate --clean allure-results/ -o allure-report --single-file
+    - allure generate --clean allure-results/ -o allure-report
   artifacts:    
     paths:
       - allure-report/
