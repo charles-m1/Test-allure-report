@@ -15,7 +15,7 @@ tests:
 
 allure_report:    
   stage: report
-  image: tobix/allure-cli  
+  image: moberbaralbaridbank/allure  
   script:
     - allure generate --clean allure-results/ -o allure-report --single-file
   artifacts:    
