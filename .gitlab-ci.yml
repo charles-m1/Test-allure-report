@@ -15,12 +15,9 @@ tests:
 
 allure_report:    
   stage: report
-  image: node:latest
+  image: openjdk:11
   before_script:
-    - npm install -g allure-commandline
-    - npm install -g openjdk-11-jre-headless
-    - export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-    - export PATH=$PATH:/root/.npm-global/bin
+    - apt-get update && apt-get install -y allure
   script: 
     - allure generate --clean allure-results/ -o allure-report --single-file
   artifacts:    
