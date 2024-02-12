@@ -15,7 +15,7 @@ tests:
 
 allure_report:    
   stage: report
-  image: moberbaralbaridbank/allure  
+  image: docker pull ondysss/allure
   script:
     - allure generate --clean allure-results/ -o allure-report --single-file
   artifacts:    
