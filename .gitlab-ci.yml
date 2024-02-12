@@ -18,6 +18,8 @@ allure_report:
   image: node:latest
   before_script:
     - npm install -g allure-commandline
+    - npm install -g openjdk-11-jre-headless
+    - export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
     - export PATH=$PATH:/root/.npm-global/bin
   script: 
     - allure generate --clean allure-results/ -o allure-report --single-file
