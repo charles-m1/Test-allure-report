@@ -7,3 +7,8 @@ tests:
   script:
     - npm ci
     - npx playwright test
+  artifacts:    
+    when: always
+    paths:
+      - playwright-report
+    expire_in: 3 days
