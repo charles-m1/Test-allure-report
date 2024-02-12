@@ -12,6 +12,7 @@ tests:
     when: always
     paths:
       - allure-results
+      - playwright-report
 
 allure_report:    
   stage: report
