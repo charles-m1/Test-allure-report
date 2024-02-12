@@ -1,0 +1,57 @@
+trigger:
+  - none
+
+pr:
+  - none
+
+pool:
+  vmImage: 'ubuntu-latest' 
+
+parameters:
+- name: runConfiguration
+  displayName: 'runConfiguration'
+  type: string
+  default: 'test'
+
+schedules:
+- cron: '50 5 * * *'
+  displayName: Smoke test run on Dev env at 6:50 AM UTC+1
+  branches:
+    include:
+      - master
+
+steps:
+- task: UseNode@1
+  inputs:
+    version: '20'
+    checkLatest: true
+  displayName: 'Install Node.js'
+- script: |
+    npm init -y
+    npm install --dev @playwright/test@latest
+    npm install --dev playwright@latest
+    npx playwright install
+  displayName: 'Install Playwright'
+
+- task: UseNode@1
+  inputs:
+    version: '20'
+    checkLatest: true
+  displayName: 'Use Node.js'
+- script: |
+    npm run ${{ parameters.runConfiguration }}
+  displayName: "Execute Playwright tests"
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: '$(System.DefaultWorkingDirectory)/playwright-report'
+    artifactName: 'Html Test Report'
+  displayName: 'Publish HTML Report'
+  condition: succeededOrFailed()
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'xml_test_report.xml'
+    searchFolder : '$(System.DefaultWorkingDirectory)'
+  condition: succeededOrFailed()  
