@@ -15,14 +15,12 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run tests
         run: npx playwright test
-      - name: Run tests
-        run: allure generate
       - name: Upload artifact
         uses: actions/upload-artifact@v4
-        with: 
-          name: report
-          path: allure-report
-          retention-days: 5
+        #with: 
+        #  name: results
+        #  path: allure-results
+        #  retention-days: 5
 
       #- uses: actions/checkout@v2
 
