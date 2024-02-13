@@ -15,13 +15,13 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run tests
         run: npx playwright test
-      - uses: actions/upload-artifact@v2
-        if: ${{ always() }}
+      - name: Install Allure Commandline
+        run: npm install -g allure-commandline
+      - name: Generate Allure report
+        run: allure generate --clean
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v2
         with:
-          name: test-artifacts
-          path: allure-results
-      - uses: afiore/action-allure-report@v0.1.0
-        with:
-          results-dir: allure-results
-          report-dir: allure-report
+          name: allure-report
+          path: allure-report
       
