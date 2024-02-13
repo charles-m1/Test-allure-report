@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Feb 13 13:19:05 GMT 2024","Tue Feb 13 13:19:09 GMT 2024","3662","webkit","example.spec.ts","","","","get started link",""
+"passed","Tue Feb 13 13:18:57 GMT 2024","Tue Feb 13 13:19:05 GMT 2024","8029","webkit","example.spec.ts","","","","has title",""
+"passed","Tue Feb 13 13:18:56 GMT 2024","Tue Feb 13 13:18:57 GMT 2024","736","chromium","example.spec.ts","","","","get started link",""
+"passed","Tue Feb 13 13:18:51 GMT 2024","Tue Feb 13 13:18:56 GMT 2024","5074","chromium","example.spec.ts","","","","has title",""
