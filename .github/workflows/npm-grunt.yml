@@ -14,9 +14,13 @@ jobs:
       - name: Install playwright browsers
         run: npx playwright install --with-deps
       - name: Run tests
-        run: npx playwright test
+        run: npx playwright test      
+      - uses: afiore/action-allure-report@v0.1.0
+        with:
+          results-dir: allure-results
+          report-dir: allure-report
       - uses: actions/upload-artifact@v2
         if: ${{ always() }}
         with:
           name: test-artifacts
-          path: allure-results
+          path: allure-report
