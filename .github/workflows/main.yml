@@ -21,6 +21,8 @@ jobs:
           name: results
           path: allure-results
           retention-days: 5
+      - name: Install Allure Commandline
+        run: npm install -g allure-commandline
       - name: Generate Allure report
         run: allure generate --clean --single-file
       - name: Upload Allure report
