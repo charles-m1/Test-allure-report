@@ -15,8 +15,8 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run tests
         run: npx playwright test
-      #- name: Upload artifact
-       # uses: actions/upload-artifact@v4
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         #with: 
         #  name: results
         #  path: allure-results
@@ -42,6 +42,13 @@ jobs:
           #allure_report: allure-report
           allure_history: allure-history
           keep_reports: 20
+      - name: Generate Allure report
+        run: allure generate --clean --single-file
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-report
+          path: allure-report-single-file
 
       - name: Deploy report to Github Pages
         if: always()
