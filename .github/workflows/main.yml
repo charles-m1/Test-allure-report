@@ -28,8 +28,8 @@ jobs:
       - name: Upload Allure report
         uses: actions/upload-artifact@v2
         with:
-          name: allure-report
-          path: allure-report-single-file
+          name: allure-report-single-file
+          path: allure-report
 
       #- uses: actions/checkout@v2
 
